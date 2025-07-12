@@ -9,9 +9,18 @@ on:
     - main
 
 jobs:
-  build:
-
+  build-arm64:
     runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Configure
+      run: ./configure
+    - name: Make
+      run: make
+
+  build-x64:
+    runs-on: macos-13
 
     steps:
     - uses: actions/checkout@v4
