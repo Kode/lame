@@ -18,8 +18,12 @@ jobs:
       run: ./configure
     - name: Make
       run: make
+    - name: Strip
+      run: strip -u -r frontend/lame
+    - name: Sign
+      run: codesign --sign - --timestamp --force frontend/lame
     - name: Copy binary
-      run: cp lame KoreTools_macos_arm64/lame
+      run: cp frontend/lame KoreTools_macos_arm64/lame
     - name: Set name
       run: git config --global user.name "Robbot"
     - name: Set email
@@ -57,8 +61,12 @@ jobs:
       run: ./configure
     - name: Make
       run: make
+    - name: Strip
+      run: strip -u -r frontend/lame
+    - name: Sign
+      run: codesign --sign - --timestamp --force frontend/lame
     - name: Copy binary
-      run: cp lame KoreTools_macos_x64/lame
+      run: cp frontend/lame KoreTools_macos_x64/lame
     - name: Set name
       run: git config --global user.name "Robbot"
     - name: Set email
